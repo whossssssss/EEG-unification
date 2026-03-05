@@ -1,64 +1,63 @@
-# EEG统一化处理工具 (EEG Unification Tool)
+# EEG Unification Tool
 
-##  简介
+##  Introduction
 
-在进行多被试EEG数据分析时，常常会遇到不同被试的电极通道不完全一致的问题。本工具通过自动识别多个EEG文件中的公共通道，并只保留这些公共通道，使得所有文件具有相同的通道配置，便于后续的批量分析和处理。
+When conducting multi-subject EEG data analysis, it's common to encounter inconsistencies in electrode channels across different subjects. This tool automatically identifies common channels across multiple EEG files and retains only these common channels, ensuring all files have identical channel configurations for subsequent batch analysis and processing.
 
-###  主要特点
+###  Key Features
 
--  **精准识别**：自动找出多个.set文件中的公共通道
--  **最小干预**：只保留公共通道，最大程度保留原始数据
--  **完整报告**：生成详细的处理报告，包括通道保留率等信息
--  **结果验证**：提供验证功能，确保统一化结果正确
--  **批量处理**：支持批量处理多个文件
--  **安全机制**：通道保留率过低时会发出警告
+-  **Precise Identification**: Automatically finds common channels across multiple .set files
+-  **Minimal Intervention**: Retains only common channels while preserving original data to the greatest extent
+-  **Comprehensive Reports**: Generates detailed processing reports including channel retention rates
+-  **Result Validation**: Provides validation functionality to ensure correct unification
+-  **Batch Processing**: Supports batch processing of multiple files
+-  **Safety Mechanism**: Issues warnings when channel retention rates are too low
 
-##  安装
+##  Installation
 
-### 环境要求
-- Python 3.7 或更高版本
-- pip 包管理工具
+### Requirements
+- Python 3.7 or higher
+- pip package manager
 
-## 📋 快速开始
+##  Quick Start
 
-### 基础用法
+### Basic Usage
 
 ```python
+# Set input and output paths
+input_dir = "./data/raw_eeg"      # Raw data folder
+output_dir = "./data/unified_eeg" # Output folder
 
-# 设置输入输出路径
-input_dir = "./data/raw_eeg"      # 原始数据文件夹
-output_dir = "./data/unified_eeg" # 输出文件夹
-
-# 执行统一化处理
+# Execute unification processing
 unify_common_channels_only(
     input_dir=input_dir,
     output_dir=output_dir,
-    file_pattern="*.set"  # 可以修改为其他文件格式
+    file_pattern="*.set"  # Can be modified for other file formats
 )
 ```
 
-##  输出示例
+##  Output Example
 
-### 控制台输出
+### Console Output
 ```
-找到 5 个文件进行统一化
-✅ subject1.set: 32个通道
-✅ subject2.set: 30个通道
-✅ subject3.set: 32个通道
-✅ subject4.set: 28个通道
-✅ subject5.set: 32个通道
+Found 5 files for unification
+ subject1.set: 32 channels
+ subject2.set: 30 channels
+ subject3.set: 32 channels
+ subject4.set: 28 channels
+ subject5.set: 32 channels
 
-公共通道分析:
-文件数量: 5
-公共通道数量: 26
-公共通道列表: ['Fz', 'Cz', 'Pz', 'F3', 'F4', ...]
+Common Channel Analysis:
+Number of files: 5
+Number of common channels: 26
+Common channel list: ['Fz', 'Cz', 'Pz', 'F3', 'F4', ...]
 
-通道保留率分析:
-subject1.set: 32 → 26 通道 (81.2%)
-subject2.set: 30 → 26 通道 (86.7%)
-subject3.set: 32 → 26 通道 (81.2%)
-subject4.set: 28 → 26 通道 (92.9%)
-subject5.set: 32 → 26 通道 (81.2%)
+Channel Retention Rate Analysis:
+subject1.set: 32 → 26 channels (81.2%)
+subject2.set: 30 → 26 channels (86.7%)
+subject3.set: 32 → 26 channels (81.2%)
+subject4.set: 28 → 26 channels (92.9%)
+subject5.set: 32 → 26 channels (81.2%)
 
-平均通道保留率: 84.6%
+Average channel retention rate: 84.6%
 ```
