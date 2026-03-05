@@ -103,7 +103,9 @@ def generate_simple_report(input_files, common_channels, retention_rates, output
     """Generate simple processing report"""
 
     report_content = f"""
-    
+EEG Data Unification Processing Report
+======================================
+
 Number of input files: {len(input_files)}
 Number of common channels: {len(common_channels)}
 
