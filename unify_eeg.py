@@ -1,5 +1,4 @@
 ```python
-# -*- coding: utf-8 -*-
 import mne
 import os
 import numpy as np
