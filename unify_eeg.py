@@ -6,11 +6,6 @@ import numpy as np
 import glob
 
 def unify_common_channels_only(input_dir, output_dir, file_pattern="*.set"):
-    """
-    Unification processing that only retains common channels
-    Minimizes data impact, performs only necessary channel selection
-    """
-
     os.makedirs(output_dir, exist_ok=True)
 
     # Get all files
@@ -109,10 +104,7 @@ def generate_simple_report(input_files, common_channels, retention_rates, output
     """Generate simple processing report"""
 
     report_content = f"""
-EEG Data Unification Processing Report
-======================================
-
-Processing time: {np.datetime64('now')}
+    
 Number of input files: {len(input_files)}
 Number of common channels: {len(common_channels)}
 
@@ -137,9 +129,6 @@ File processing details:
     print(f"Processing report saved: {report_path}")
 
 def verify_unification_results(original_dir, unified_dir):
-    """
-    Verify unification results
-    """
     print("\nVerifying unification results...")
 
     original_files = glob.glob(os.path.join(original_dir, "*.set"))
