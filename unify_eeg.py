@@ -1,4 +1,3 @@
-```python
 import mne
 import os
 import numpy as np
@@ -170,4 +169,3 @@ if __name__ == "__main__":
 
     # Optional: Verify results
     verify_unification_results(input_dir, output_dir)
-```
